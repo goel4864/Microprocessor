@@ -1,0 +1,177 @@
+ADD BX, CX
+
+BL <-BL + CL
+
+
+BL:   FF
+CL:	  01
+---------
+	 100		
+	 ----
+	 
+	 
+ADC   BL, CL
+
+BL <- Bl + CL + CF
+
+12 FF
+00 01
+         1
+MOV BX, 12FFH
+MOV CX, 0001H
+
+ADD BL,CL
+ADC BH,CH
+
+ADC  -> 16,32,64,128 bit
+
+
+
+
+
+
+SUB  BL,CL
+BL <- BL - CL  ;carry borrow
+
+
+SBB   
+
+BL <- BL - Cl - CF
+
+ 
+ 47H
+-19H
+----
+ 28H
+ 
+ MUL operand ;single operand
+ 
+ Three accumulator 8086
+ 
+ 1. 8 bit    ->  AL
+ 2. 16 bit   ->  AX
+ 3. 32 bit   ->  DX.AX
+ 
+ MUL BL
+  AX <- AL X BL
+ 2^16  <- 2^8  X 2^8
+ 
+ 
+ MUL BH 
+ AX <- AL X BH
+ 
+ MUL BX 
+ DX.AX  <- AX x BX
+  H  L
+ 
+MULTIPLICATION : 1.  Unsigned : Conventional
+			     2.  Signed :  Booth's Algorithm
+ 
+ 
+MUL: unsigned
+IMUL : Interger  ; signed
+IMUL BL 
+ 
+ 
+ 
+DIV: Single Operand (Divisor)
+	Accumulator : Dividend
+	
+16bit /8 bit
+32bit / 16 bit
+equal -> size bit : 0075/15
+
+8  bit x 8 bit  -> 16 bit
+16 bit / 8 bit  -> 8 bit
+
+unsigned : Non-Restoring Division  DIV
+signed   : Restoring Division      IDIV
+
+Examples:
+DIV BL
+AH.AL <- AX / BL
+ R Q
+ 
+DIV BX
+DX AX <-  DXAX / BX
+ R  Q
+ 
+=======================================================
+
+CBW   - convert byte to word 
+
+			 AL
+|---------------------------|
+      1000          0011
+	  
+CBW	  
+           AH                            AL
+|---------------------------||---------------------------|   
+     1111         1111            1000        0011
+	 
+	 
+ 
+ Five:  +5 0101       0000 0101   :extend zero as msb is zero
+        -5 1011       1111 1011   :extend one as msb is one
+ 
+ 
+ MOV AH,00   : unsigned
+ CBW		 : signed
+ 
+ 
+ CWD   - convert word to DW
+											  AX 
+									|---------------------------|
+									       1000001110000011
+ 
+ 
+            DX                                    AX
+|----------------------------------||---------------------------|   
+     1111111111111111                      1000001110000011		
+ 
+ 
+ 
+INC  CX
+DEC  CX
+
+NEG BL  2's complement of operand
+
+-BL  ->  BL
+
+ 
+ 0000 0000 0000 0101   : 05  MOV AX, 05
+           1111 1011   : FB  NEG AL
+  F     B
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
